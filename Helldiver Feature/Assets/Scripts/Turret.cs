@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour
     {
         if (turret.transform.position.y > ground)
         {
-            turret.transform.position = Vector3.MoveTowards(bomb.transform.position, ball.transform.position, speed);
+            turret.transform.position = Vector3.MoveTowards(turret.transform.position, ball.transform.position, speed);
         }
         else
         {
