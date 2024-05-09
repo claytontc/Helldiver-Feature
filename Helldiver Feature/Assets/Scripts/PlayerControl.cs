@@ -14,13 +14,19 @@ public class PlayerControl : MonoBehaviour
     public bool laser = false;
     public bool turret = false;
     public GameObject ball;
-    public float ballSpeed = 15f;
+    private Vector3 ballStartPos;
+    public float ballSpeed = 7.5f;
 
     // Start is called before the first frame update
     private void Awake()
     {
         playerControl = new PlayerControls();
         playerControl.Enable();
+    }
+
+    private void Start()
+    {
+        ballStartPos = ball.transform.position;
     }
 
     public void FixedUpdate()
@@ -35,6 +41,14 @@ public class PlayerControl : MonoBehaviour
         else if(inputSequence.Count == 5)
         {
             CheckBombandLaser();
+        }
+        if(ball.transform.position.y < ballStartPos.y)
+        {
+            StartCoroutine(ReturnBall());
+        }
+        if(bomb || laser || gas || turret)
+        {
+            ball.GetComponent<MeshRenderer>().material.color = Color.blue;
         }
     }
 
@@ -110,5 +124,13 @@ public class PlayerControl : MonoBehaviour
             ball.GetComponent<Rigidbody>().useGravity = true;
             ball.transform.Translate(Vector3.forward * Time.deltaTime * ballSpeed);
         }
+    }
+
+    private IEnumerator ReturnBall()
+    {
+        yield return new WaitForSeconds(5);
+        ball.GetComponent<Rigidbody>().useGravity = false;
+        ball.transform.position = ballStartPos;
+        ball.GetComponent<MeshRenderer>().material.color = Color.gray;
     }
 }

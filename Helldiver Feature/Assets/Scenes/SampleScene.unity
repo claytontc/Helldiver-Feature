@@ -209,12 +209,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.2, y: 1, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 478983386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -487,6 +487,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 865624318}
+  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &478983387
@@ -532,9 +533,69 @@ MonoBehaviour:
     m_ActionId: 4edc7c84-a17c-4cee-920c-385be1e8632e
     m_ActionName: PlayerInputs/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a2561e01-b5fd-45bd-8757-4d9d8f510e52
-    m_ActionName: PlayerInputs/CodeInputs[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+      m_Calls:
+      - m_Target: {fileID: 478983389}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: InputUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 278c52ff-5edb-4f68-ba5c-353fae36265f
+    m_ActionName: PlayerInputs/Input Up[/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 478983389}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: InputDown
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2e448cb3-5053-47e8-bb30-445ef72cff54
+    m_ActionName: PlayerInputs/Input Down[/Keyboard/downArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 478983389}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: InputLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 86552978-c4fc-4d9b-908f-70efd8f009db
+    m_ActionName: PlayerInputs/Input Left[/Keyboard/leftArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 478983389}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: InputRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2639e6ff-95dc-4914-866c-6e12ba47bb0d
+    m_ActionName: PlayerInputs/Input Right[/Keyboard/rightArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInputs
@@ -580,6 +641,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveforce: 5
+  bomb: 0
+  gas: 0
+  laser: 0
+  turret: 0
+  ball: {fileID: 865624314}
+  ballSpeed: 7.5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,8 +710,9 @@ GameObject:
   - component: {fileID: 865624315}
   - component: {fileID: 865624319}
   - component: {fileID: 865624320}
+  - component: {fileID: 865624321}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,6 +844,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveforce: 5
+  bomb: 0
+  gas: 0
+  laser: 0
+  turret: 0
+  ball: {fileID: 865624314}
+  ballSpeed: 7.5
+--- !u!114 &865624321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865624314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4820324f124fee94d9e8fdf73675b332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 8324935408960307322, guid: 0625666e5d04ccd448275d0211e2ed8f, type: 3}
+  laser: {fileID: 5683800725904366197, guid: a30c53715080bfc43a322be6c704a973, type: 3}
+  gas: {fileID: 6141432983634159048, guid: c09c27b84b41beb4783fc6fbf34a100e, type: 3}
+  turret: {fileID: 8386594395059620323, guid: 24aefb12a2f07e546845c26e14f05dd8, type: 3}
+  ball: {fileID: 865624314}
+  ground: -1.4
 --- !u!1 &1091097196
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,7 +977,6 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 478983386}

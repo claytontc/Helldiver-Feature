@@ -9,12 +9,12 @@ public class Turret : MonoBehaviour
     public float ground;
     public float speed = 50f;
     private Vector3 landingPoint;
-    private List<int> inputSequence = new List<int>();
 
     // Start is called before the first frame update
     void Start()
     {
         landingPoint = new Vector3(ball.transform.position.x, ground, ball.transform.position.z);
+        ball = GameObject.Find("Ball");
     }
 
     // Update is called once per frame

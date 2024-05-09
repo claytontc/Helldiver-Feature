@@ -221,6 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4618877896042952333}
+  - component: {fileID: -1019633144303118302}
   m_Layer: 0
   m_Name: Gatling Turret
   m_TagString: Untagged
@@ -245,3 +246,19 @@ Transform:
   - {fileID: 22201481919801211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1019633144303118302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8386594395059620323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12016f9d33f7a0a44906f7e5c93a4ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 0}
+  turret: {fileID: 8386594395059620323}
+  ground: -1.4
+  speed: 50

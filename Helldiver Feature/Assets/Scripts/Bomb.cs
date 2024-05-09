@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         landingPoint = new Vector3(bomb.transform.position.x, ground, bomb.transform.position.z);
+        ball = GameObject.Find("Ball");
     }
 
     // Update is called once per frame

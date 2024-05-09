@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 680328130829055696}
   - component: {fileID: 3410706176698635524}
   - component: {fileID: 7979425921817642344}
+  - component: {fileID: -4855889042500257914}
   m_Layer: 0
   m_Name: 500kg Bomb
   m_TagString: Untagged
@@ -108,3 +109,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &-4855889042500257914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324935408960307322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4758c974e1e6f3b488a56ebd481b993d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 0}
+  bomb: {fileID: 8324935408960307322}
+  explosion: {fileID: 8007404751648590843, guid: f50251ceef14d794e9bfc7e143f6e669,
+    type: 3}
+  ground: -1.4
+  speed: 50
