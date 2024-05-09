@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8991870909423731522}
   - component: {fileID: 5227442871299098941}
   - component: {fileID: 6035045266397877336}
+  - component: {fileID: 7667484176665606990}
   m_Layer: 0
   m_Name: 500kg Bomb Explosion
   m_TagString: Untagged
@@ -105,3 +106,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7667484176665606990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007404751648590843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7a17232bb56a841a2e82c31876a38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 8007404751648590843}

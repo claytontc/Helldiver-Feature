@@ -5,6 +5,12 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+/*
+ * Author: [Cranford, Clayton]
+ * Last Updated: [05/09/2024]
+ * [File handles the 500kg bomb's dropping, and exploding]
+ */
+
 public class Bomb : MonoBehaviour
 {
     public GameObject ball;
@@ -17,16 +23,17 @@ public class Bomb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        landingPoint = new Vector3(bomb.transform.position.x, ground, bomb.transform.position.z);
         ball = GameObject.Find("Ball");
+        landingPoint = ball.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(bomb.transform.position.y > ground)
+        landingPoint = ball.transform.position;
+        if(bomb.transform.position.y > landingPoint.y)
         {
-            bomb.transform.position = Vector3.MoveTowards(bomb.transform.position, ball.transform.position, speed);
+            bomb.transform.position = Vector3.MoveTowards(bomb.transform.position, landingPoint, speed);
         }
         else
         {
@@ -35,6 +42,10 @@ public class Bomb : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// One second after landing, the bomb's explosion is spawned and the bomb itself is destroyed
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator TickTickBoom()
     {
         yield return new WaitForSeconds(1);
@@ -42,9 +53,5 @@ public class Bomb : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private IEnumerator DestroyExplosion()
-    {
-        yield return new WaitForSeconds(7);
-        Destroy(explosion.gameObject);
-    }
+
 }

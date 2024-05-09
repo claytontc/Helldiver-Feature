@@ -71,6 +71,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3275641-3cfe-400c-9ef2-8fd547284dd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Input Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09a53d0e-883d-4d84-8ca1-fc5854e89fea"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -196,6 +216,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_PlayerInputs_InputDown = m_PlayerInputs.FindAction("Input Down", throwIfNotFound: true);
         m_PlayerInputs_InputLeft = m_PlayerInputs.FindAction("Input Left", throwIfNotFound: true);
         m_PlayerInputs_InputRight = m_PlayerInputs.FindAction("Input Right", throwIfNotFound: true);
+        m_PlayerInputs_Throw = m_PlayerInputs.FindAction("Throw", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +283,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInputs_InputDown;
     private readonly InputAction m_PlayerInputs_InputLeft;
     private readonly InputAction m_PlayerInputs_InputRight;
+    private readonly InputAction m_PlayerInputs_Throw;
     public struct PlayerInputsActions
     {
         private @PlayerControls m_Wrapper;
@@ -271,6 +293,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @InputDown => m_Wrapper.m_PlayerInputs_InputDown;
         public InputAction @InputLeft => m_Wrapper.m_PlayerInputs_InputLeft;
         public InputAction @InputRight => m_Wrapper.m_PlayerInputs_InputRight;
+        public InputAction @Throw => m_Wrapper.m_PlayerInputs_Throw;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -295,6 +318,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @InputRight.started += instance.OnInputRight;
             @InputRight.performed += instance.OnInputRight;
             @InputRight.canceled += instance.OnInputRight;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
         }
 
         private void UnregisterCallbacks(IPlayerInputsActions instance)
@@ -314,6 +340,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @InputRight.started -= instance.OnInputRight;
             @InputRight.performed -= instance.OnInputRight;
             @InputRight.canceled -= instance.OnInputRight;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
         }
 
         public void RemoveCallbacks(IPlayerInputsActions instance)
@@ -338,5 +367,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInputDown(InputAction.CallbackContext context);
         void OnInputLeft(InputAction.CallbackContext context);
         void OnInputRight(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
     }
 }
