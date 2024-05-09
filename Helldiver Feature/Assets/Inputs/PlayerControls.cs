@@ -37,9 +37,36 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""CodeInputs"",
+                    ""name"": ""Input Up"",
                     ""type"": ""Button"",
-                    ""id"": ""a2561e01-b5fd-45bd-8757-4d9d8f510e52"",
+                    ""id"": ""278c52ff-5edb-4f68-ba5c-353fae36265f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Input Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e448cb3-5053-47e8-bb30-445ef72cff54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Input Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""86552978-c4fc-4d9b-908f-70efd8f009db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Input Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""2639e6ff-95dc-4914-866c-6e12ba47bb0d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -115,45 +142,45 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d8d033d5-54c8-4b2c-bc7f-fea069cd83b9"",
+                    ""id"": ""56198916-8ec1-4974-ae02-fad7d7d12430"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CodeInputs"",
+                    ""action"": ""Input Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5c5f44fd-6df3-48ed-b601-cfc6c9a1f339"",
+                    ""id"": ""001cf15e-ff20-4bf9-b5ba-1b2c91aa5e4a"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CodeInputs"",
+                    ""action"": ""Input Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eb47d994-ec25-4bf9-affe-579d1d89bfdc"",
+                    ""id"": ""cbc9b72a-2df3-4802-830f-ad1bd0c25134"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CodeInputs"",
+                    ""action"": ""Input Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7f221250-7e03-4ded-b534-9d693bb5fa24"",
+                    ""id"": ""81eea692-9a27-473b-876c-9be42d7920d6"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""CodeInputs"",
+                    ""action"": ""Input Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -165,7 +192,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // PlayerInputs
         m_PlayerInputs = asset.FindActionMap("PlayerInputs", throwIfNotFound: true);
         m_PlayerInputs_Movement = m_PlayerInputs.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerInputs_CodeInputs = m_PlayerInputs.FindAction("CodeInputs", throwIfNotFound: true);
+        m_PlayerInputs_InputUp = m_PlayerInputs.FindAction("Input Up", throwIfNotFound: true);
+        m_PlayerInputs_InputDown = m_PlayerInputs.FindAction("Input Down", throwIfNotFound: true);
+        m_PlayerInputs_InputLeft = m_PlayerInputs.FindAction("Input Left", throwIfNotFound: true);
+        m_PlayerInputs_InputRight = m_PlayerInputs.FindAction("Input Right", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -228,13 +258,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerInputs;
     private List<IPlayerInputsActions> m_PlayerInputsActionsCallbackInterfaces = new List<IPlayerInputsActions>();
     private readonly InputAction m_PlayerInputs_Movement;
-    private readonly InputAction m_PlayerInputs_CodeInputs;
+    private readonly InputAction m_PlayerInputs_InputUp;
+    private readonly InputAction m_PlayerInputs_InputDown;
+    private readonly InputAction m_PlayerInputs_InputLeft;
+    private readonly InputAction m_PlayerInputs_InputRight;
     public struct PlayerInputsActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerInputsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerInputs_Movement;
-        public InputAction @CodeInputs => m_Wrapper.m_PlayerInputs_CodeInputs;
+        public InputAction @InputUp => m_Wrapper.m_PlayerInputs_InputUp;
+        public InputAction @InputDown => m_Wrapper.m_PlayerInputs_InputDown;
+        public InputAction @InputLeft => m_Wrapper.m_PlayerInputs_InputLeft;
+        public InputAction @InputRight => m_Wrapper.m_PlayerInputs_InputRight;
         public InputActionMap Get() { return m_Wrapper.m_PlayerInputs; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -247,9 +283,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @CodeInputs.started += instance.OnCodeInputs;
-            @CodeInputs.performed += instance.OnCodeInputs;
-            @CodeInputs.canceled += instance.OnCodeInputs;
+            @InputUp.started += instance.OnInputUp;
+            @InputUp.performed += instance.OnInputUp;
+            @InputUp.canceled += instance.OnInputUp;
+            @InputDown.started += instance.OnInputDown;
+            @InputDown.performed += instance.OnInputDown;
+            @InputDown.canceled += instance.OnInputDown;
+            @InputLeft.started += instance.OnInputLeft;
+            @InputLeft.performed += instance.OnInputLeft;
+            @InputLeft.canceled += instance.OnInputLeft;
+            @InputRight.started += instance.OnInputRight;
+            @InputRight.performed += instance.OnInputRight;
+            @InputRight.canceled += instance.OnInputRight;
         }
 
         private void UnregisterCallbacks(IPlayerInputsActions instance)
@@ -257,9 +302,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @CodeInputs.started -= instance.OnCodeInputs;
-            @CodeInputs.performed -= instance.OnCodeInputs;
-            @CodeInputs.canceled -= instance.OnCodeInputs;
+            @InputUp.started -= instance.OnInputUp;
+            @InputUp.performed -= instance.OnInputUp;
+            @InputUp.canceled -= instance.OnInputUp;
+            @InputDown.started -= instance.OnInputDown;
+            @InputDown.performed -= instance.OnInputDown;
+            @InputDown.canceled -= instance.OnInputDown;
+            @InputLeft.started -= instance.OnInputLeft;
+            @InputLeft.performed -= instance.OnInputLeft;
+            @InputLeft.canceled -= instance.OnInputLeft;
+            @InputRight.started -= instance.OnInputRight;
+            @InputRight.performed -= instance.OnInputRight;
+            @InputRight.canceled -= instance.OnInputRight;
         }
 
         public void RemoveCallbacks(IPlayerInputsActions instance)
@@ -280,6 +334,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IPlayerInputsActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnCodeInputs(InputAction.CallbackContext context);
+        void OnInputUp(InputAction.CallbackContext context);
+        void OnInputDown(InputAction.CallbackContext context);
+        void OnInputLeft(InputAction.CallbackContext context);
+        void OnInputRight(InputAction.CallbackContext context);
     }
 }

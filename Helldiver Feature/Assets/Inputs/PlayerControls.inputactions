@@ -15,9 +15,36 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CodeInputs",
+                    "name": "Input Up",
                     "type": "Button",
-                    "id": "a2561e01-b5fd-45bd-8757-4d9d8f510e52",
+                    "id": "278c52ff-5edb-4f68-ba5c-353fae36265f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Input Down",
+                    "type": "Button",
+                    "id": "2e448cb3-5053-47e8-bb30-445ef72cff54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Input Left",
+                    "type": "Button",
+                    "id": "86552978-c4fc-4d9b-908f-70efd8f009db",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Input Right",
+                    "type": "Button",
+                    "id": "2639e6ff-95dc-4914-866c-6e12ba47bb0d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -93,45 +120,45 @@
                 },
                 {
                     "name": "",
-                    "id": "d8d033d5-54c8-4b2c-bc7f-fea069cd83b9",
+                    "id": "56198916-8ec1-4974-ae02-fad7d7d12430",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CodeInputs",
+                    "action": "Input Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "5c5f44fd-6df3-48ed-b601-cfc6c9a1f339",
+                    "id": "001cf15e-ff20-4bf9-b5ba-1b2c91aa5e4a",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CodeInputs",
+                    "action": "Input Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "eb47d994-ec25-4bf9-affe-579d1d89bfdc",
+                    "id": "cbc9b72a-2df3-4802-830f-ad1bd0c25134",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CodeInputs",
+                    "action": "Input Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "7f221250-7e03-4ded-b534-9d693bb5fa24",
+                    "id": "81eea692-9a27-473b-876c-9be42d7920d6",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CodeInputs",
+                    "action": "Input Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
